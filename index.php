@@ -11,14 +11,14 @@ $f3 = Base::instance();
 
 //Define a default route
 $f3->route('GET /', function() {
-    $view = new View;
+    $view = new Template();
     echo $view->render
         ('views/home.html');
 });
 
 //Define a route for the leaderboard
 $f3->route('GET /leaderboard', function() {
-    $view = new View;
+    $view = new Template();
     echo $view->render
         ('views/leaderboard.html');
 });
