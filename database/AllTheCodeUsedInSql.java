@@ -23,8 +23,4 @@ CREATE TABLE Melody (
     FOREIGN KEY (score_id) REFERENCES Score(score_id)
 );
 
-
-
-
-
  */

@@ -1,13 +1,68 @@
 .sidebar {
     background-color: bisque;
-    height: 100%;
+}
+/* Add your custom CSS styles here if you want any changes Ethan */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 
-.natural {
-    border-top: 2px;
-    border-left: 2px;
-    border-right: 2px;
-    height: 20px;
-    width: 20px;
-    background-color: white;
+/* Header styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Content styles */
+.content {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+}
+
+img.rounded {
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    .text-end {
+        text-align: center;
+    }
+
+    img.rounded {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
