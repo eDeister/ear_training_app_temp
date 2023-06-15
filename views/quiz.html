@@ -1,8 +1,8 @@
 <!--
     Name: Ethan Deister, Sajal Khadgi
-    Description: A quiz page that presents users with an interval quiz and allows them to submit their score to the leaderboard.
+    Description: A quiz the user can press play and then automatically a random note is played. Then the user has to guess which musical note it is to earn points. For each right answer user get a point and for each wrong answer a point is deducted.
     Implemented Requirements:
-    1. Interval quiz for the user.
+    1. Musical quiz for the user.
     2. Submit button to submit the score to the leaderboard.
     3. Additional features and logic as per project requirements.
 -->
@@ -31,24 +31,25 @@
     <div class="row">
         <div class="col-3 sidebar"></div>
         <div class="col-6">
-            <h2>Interval Quiz</h2>
-            <p>Listen to the random music note and guess which musical note it is.</p>
-            <div id="piano">
-                <!-- Piano keys here -->
+            <h2>Musical Note Quiz</h2>
+            <p>Listen to the note and enter your guess below.</p>
+            <div class="mb-3">
+                <button id="playBtn" class="btn btn-primary">Play Note</button>
             </div>
-            <div id="question" class="mb-3">
-                <label for="note" class="form-label">Your answer:</label>
-                <input type="text" class="form-control" id="note" name="note">
+            <div id="piano" class="mb-3"></div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="noteInput" placeholder="Enter your guess">
             </div>
-            <button type="button" id="playBtn" class="btn btn-primary">Play Note</button>
-            <button type="button" id="submitBtn" class="btn btn-success">Submit</button>
-            <button type="button" id="nextBtn" class="btn btn-primary" style="display: none;">Next Question</button>
+            <div class="mb-3">
+                <p>Your Score: <span id="score">0</span></p>
+            </div>
+            <button id="submitBtn" class="btn btn-primary">Submit</button>
         </div>
         <div class="col-3 sidebar"></div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tone@14.8.30/build/Tone.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../scripts/quiz.js"></script>
 </body>
 </html>

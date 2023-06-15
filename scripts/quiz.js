@@ -1,76 +1,62 @@
-// Define an array of musical notes
-const notes = ["C", "D", "E", "F", "G", "A", "B"];
+// Quiz logic using Tone.js for audio playback
 
-// Get the required elements from the DOM
-const playBtn = document.getElementById("playBtn");
-const submitBtn = document.getElementById("submitBtn");
-const nextBtn = document.getElementById("nextBtn");
-const noteInput = document.getElementById("note");
-const piano = document.getElementById("piano");
+// Create a new synth with a piano sound
+const synth = new Tone.Synth().toDestination();
 
-// Add event listeners
-playBtn.addEventListener("click", playNote);
-submitBtn.addEventListener("click", submitAnswer);
-nextBtn.addEventListener("click", nextQuestion);
+// Array of available notes
+const notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
-// Variable to store the current question index
-let questionIndex = 0;
+// Function to play a random note
+function playRandomNote() {
+    // Get a random note from the array
+    const randomNote = notes[Math.floor(Math.random() * notes.length)];
 
-// Function to play a random music note
-function playNote() {
-    const randomNote = getRandomNote();
-    // Play the note using your preferred method
-    // For example, you can use the Web Audio API or an external library like Howler.js
+    // Trigger the synth to play the note
+    synth.triggerAttackRelease(randomNote + '4', '4n');
+
+    // Return the played note
+    return randomNote;
 }
 
-// Function to get a random note from the notes array
-function getRandomNote() {
-    const randomIndex = Math.floor(Math.random() * notes.length);
-    return notes[randomIndex];
+// Function to check the user's guess
+function checkGuess(note, guess) {
+    // Convert the guess to uppercase for comparison
+    guess = guess.toUpperCase();
+
+    // Compare the guess with the actual note
+    return guess === note;
 }
 
-// Function to handle submitting the answer
-function submitAnswer() {
-    const userAnswer = noteInput.value.toUpperCase();
-    const correctAnswer = getCurrentQuestion().interval;
+// Play button event listener
+document.getElementById('playBtn').addEventListener('click', function() {
+    // Play a random note and store the played note
+    const playedNote = playRandomNote();
 
-    // Check if the user's answer is correct
-    if (userAnswer === correctAnswer) {
-        // Increment the score or perform any other necessary actions
-        // For example, you can use AJAX to update the score on the server-side
-        alert("Correct answer! You earned a point.");
+    // Store the played note in a hidden input field
+    document.getElementById('playedNote').value = playedNote;
+});
+
+// Submit button event listener
+document.getElementById('submitBtn').addEventListener('click', function() {
+    // Get the played note from the hidden input field
+    const playedNote = document.getElementById('playedNote').value;
+
+    // Get the user's guess from the input field
+    const userGuess = document.getElementById('noteInput').value;
+
+    // Check the user's guess
+    const isCorrect = checkGuess(playedNote, userGuess);
+
+    // Update the score based on the correctness of the guess
+    const scoreElement = document.getElementById('score');
+    const currentScore = parseInt(scoreElement.textContent);
+
+    if (isCorrect) {
+        scoreElement.textContent = currentScore + 1;
     } else {
-        // Deduct points for incorrect answer
-        alert("Incorrect answer. Point deducted.");
+        scoreElement.textContent = currentScore - 1;
     }
 
-    // Disable input and buttons until next question
-    noteInput.disabled = true;
-    submitBtn.disabled = true;
-    nextBtn.style.display = "block";
-}
-
-// Function to get the current question object
-function getCurrentQuestion() {
-    // Define your question objects with intervals and other properties
-    // Return the appropriate question object based on the current question index
-    // For example:
-    const questions = [
-        { interval: "P1", /* other properties */ },
-        { interval: "M2", /* other properties */ },
-        { interval: "P5", /* other properties */ },
-        // Add more question objects as needed
-    ];
-
-    return questions[questionIndex];
-}
-
-// Function to proceed to the next question
-function nextQuestion() {
-    questionIndex++;
-    noteInput.value = "";
-    noteInput.disabled = false;
-    submitBtn.disabled = false;
-    nextBtn.style.display = "none";
-    playNote();
-}
+    // Clear the user's input
+    document.getElementById('noteInput').value = '';
+});
