@@ -1,7 +1,7 @@
 # Earworm
 
-Earworm is an ear-training webapp designed to hand control over to the user. The user can practice virtual piano and
-train have pitch correctiong training. Users and also leave feedback about the webapp on comment pace.
+Earworm is an ear-training webapp designed to hand control over to the user. The user can practice virtual piano and 
+train for pitch correction. Users and also leave feedback about the webapp on comment page.
 
 ## Authors
 
