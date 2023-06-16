@@ -12,4 +12,3 @@ class HomeController extends BaseController
         $this->view->render('home/index', $data);
     }
 }
-?>

@@ -3,30 +3,23 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
 //Require autoload
 require_once('vendor/autoload.php');
+
+// Include the HomeController
+require_once('controllers/HomeController.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
 
-//Define a default route
-$f3->route('GET /', function() {
-    $view = new Template();
-    echo $view->render('views/home.html');
-});
+// Create an instance of the HomeController
+$homeController = new HomeController();
 
-//Define a route for the leaderboard
-$f3->route('GET /leaderboard', function() {
-    $view = new Template();
-    echo $view->render('views/leaderboard.html');
-});
-
-//Define a route for the quiz
-$f3->route('GET /quiz', function() {
-    $view = new Template();
-    echo $view->render('views/quiz.html');
-});
+// Define the routes using the controller methods
+$f3->route('GET /', [$homeController, 'home']);
+$f3->route('GET /leaderboard', [$homeController, 'leaderboard']);
+$f3->route('GET /quiz', [$homeController, 'quiz']);
+$f3->route('GET /pitch', [$homeController, 'pitch']);
 
 //Run fat free
 $f3->run();

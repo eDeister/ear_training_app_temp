@@ -1,5 +1,5 @@
 <?php
-// views/View.php
+/*// views/View.php
 
 class View
 {
@@ -8,4 +8,4 @@ class View
         // Code to render the view template
     }
 }
-?>
+*/?>

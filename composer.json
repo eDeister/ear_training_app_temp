@@ -7,6 +7,6 @@
     }
   ],
   "require": {
-    "bcosca/fatfree-core": "dev-master"
+    "bcosca/fatfree-core": "^3.8"
   }
 }
