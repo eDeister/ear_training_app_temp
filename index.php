@@ -1,4 +1,12 @@
 <?php
+
+/*
+ * Sajal Khadgi, Ethan
+ * 5/13/2023
+ * 328/ear_training_app/index.php
+ * Final Project
+ */
+
 //Turn on error reports
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

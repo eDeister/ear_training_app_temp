@@ -1,11 +1,25 @@
 <?php
 require_once 'config.php';
 
-// Fetch comments from the database
-$query = "SELECT * FROM comments ORDER BY timestamp DESC";
-$stmt = $dbh->query($query);
+// Add a comment
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $comment = $_POST['comment'];
+
+    $sql = "INSERT INTO comments (name, comment) VALUES (:name, :comment)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
+    $stmt->execute();
+    exit();
+}
+
+// View comments
+$sql = "SELECT * FROM comments ORDER BY timestamp DESC";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
 $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Render the comments in the HTML template
-$view = new Template();
-echo $view->render('views/comment.html', ['comments' => $comments]);
+// Set response headers to indicate JSON content
+header('Content-Type: application/json');
+echo json_encode($comments);
