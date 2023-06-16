@@ -1,4 +1,9 @@
 <?php
+
+/*    Name: Sajal Khadgi
+      This php page is for pdo, comment and mysql table
+      For database connection established
+*/
 require_once 'config.php';
 
 // Add a comment

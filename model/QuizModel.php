@@ -1,6 +1,7 @@
 <?php
 // models/QuizModel.php
-
+/*@author Sajal Khadgi
+Description: For learboard database and quiz*/
 class QuizModel
 {
     public function getQuestions()

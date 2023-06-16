@@ -1,7 +1,8 @@
 <?php
 
 // validation.php
-
+/*@author Sajal Khadgi
+Validation for all the pages*/
 class Validation
 {
     public static function validatePlayerData($name, $age, $instrument)

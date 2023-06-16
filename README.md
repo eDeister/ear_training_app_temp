@@ -1,14 +1,13 @@
-# ear_training_app
+# Earworm
+
+Earworm is an ear-training webapp designed to hand control over to the user. The user can practice virtual piano and
+train have pitch correctiong training. Users and also leave feedback about the webapp on comment pace.
 
 ## Authors
 
 - Ethan
 - Sajal Khadgi
 
-# Earworm
-
-Earworm is an ear-training webapp designed to hand control over to the user. The user can practice virtual piano and 
-train have pitch correctiong training. Users and also leave feedback about the webapp on comment pace.
 
 Quiz and Leaderboard are extra features and will be added soon. Maybe during the summer...
 
@@ -42,28 +41,30 @@ Inside Model directory, I have multiple files with OOP, I haven't fully applied 
 
 7. Contains full Docblocks for all PHP files and follows PEAR standards.
 
-All PHP files contains DocBlock and Follows Pear Standards.
-✔️ 8. Has full validation on the client side through JavaScript and server side through PHP.
+All PHP files contains DocBlock and Follows Pear Standards.(Did my best)
+8. Has full validation on the client side through JavaScript and server side through PHP.
 
-User and ProUser sign up, and Creation form has full validation on the client side through JavaScript (scripts/validate.js) and server side through PHP (model/validate.PHP).
-✔️ 9. All code is clean, clear, and well-commented. DRY (Don't Repeat Yourself) is practiced.
+Forms all validated through js and there is also validation.php for server side
 
-All functions and files are commented. Any code that was repeated was turned into a function and called upon instead of repeating code.
-✔️ 10. Your submission shows adequate effort for a final project in a full-stack web development course.
+9.All code is clean, clear, and well-commented. DRY (Don't Repeat Yourself) is practiced.
 
-We learned quite a bit this quarter and we think our project was able to incorporate everything and then some! We definitely did not take the easy route!
+All the files are commented. Complex Functions are described. Redundancy is as little as possible. Best of my capacity.
+10. Your submission shows adequate effort for a final project in a full-stack web development course.
+
+This was quarter provided a lot of learning opportunity. Just realize add commit push is like second nature at this point.
+I tried my best to implement things I learned and also challenged myself to grow more by applying different methods.
+I gave my best. 
+
 BONUS: Incorporates Ajax that access data from a JSON file, PHP script, or API.
 
-Our project does not incorporate Ajax.
-If you were unable to implement any requirement, mention it clearly:
+Comment webpage Axios library for making AJAX requests to the comments.php script. It fetches the comments on page load and updates the comment section dynamically. When the comment form is submitted, it sends a POST request to add the comment to the database and updates the comment section again.
 
-- Unable to implement Requirement 4
+I tried my best to complete the task as much as I could, even though I had to lift the project.
+I wasn't able to figure out few things. I initially planed to have a log in page but I wasn't able to 
+get it. 
 
-## UML Class Diagram
 
-![Class Diagram](link_to_class_diagram)
-
-## Admin Login
+## Admin Login(this is for database)
 
 Username: sajalgre_sajal
 Password: P@ssword1234

@@ -1,3 +1,6 @@
+/*Sajal Khadgi*/
+//still need to figure it out
+
 const pitchButton = document.getElementById("pitch-button");
 const repeatButton = document.getElementById("repeat-button");
 const answerButtons = document.querySelectorAll(".answer-button");

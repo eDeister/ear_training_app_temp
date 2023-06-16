@@ -1,6 +1,7 @@
 <?php
 // controllers/HomeController.php
-
+/*@author Sajal Khadgi
+Description: For learboard database and quiz*/
 /**
  * Class HomeController
  * Responsible for handling actions related to the home, leaderboard, quiz, comment, and pitch pages.

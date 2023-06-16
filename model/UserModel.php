@@ -1,5 +1,7 @@
 <?php
 // models/UserModel.php
+/*@author Sajal Khadgi
+Description: For learboard database and quiz*/
 
 class UserModel extends BaseModel
 {

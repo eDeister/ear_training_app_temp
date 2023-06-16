@@ -1,3 +1,8 @@
+//Sajal Khadgi
+//Some ideas were inspired form Royalty Free NepalInspo
+
+
+
 const pianoKeys = document.querySelectorAll(".piano-keys .key"),
 volumeSlider = document.querySelector(".volume-slider input"),
 keysCheckbox = document.querySelector(".keys-checkbox input");

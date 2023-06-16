@@ -1,5 +1,6 @@
 <?php
-
+/*@author Sajal Khadgi
+Description: For learboard database and quiz*/
 class Score
 {
     private $db;

@@ -1,3 +1,7 @@
+/*Name: Sajal
+* JS for implementing comments*/
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Submit comment form using AJAX
     document.getElementById('commentForm').addEventListener('submit', function(event) {

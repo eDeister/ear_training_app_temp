@@ -1,7 +1,8 @@
 <?php
 require_once '../model/player.php';
 require_once 'validation.php';
-
+/*@author Sajal Khadgi
+Description: For learboard database and quiz*/
 class PlayerController
 {
 private $player;
