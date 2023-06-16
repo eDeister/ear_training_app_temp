@@ -1,6 +1,6 @@
 <!--
     Name: Ethan Deister, Sajal Khadgi
-    Description: Displays a leaderboard with the highest scores achieved by users in built-in challenges.
+    Description: Displays a leaderboard with the highest scores achieved by users on quiz.html
     Implemented Requirements:
     1. Dynamic table to display leaderboard data from the server.
 -->
@@ -22,8 +22,10 @@
 <!--Nav-->
 <div class="container-fluid">
   <nav class="navbar border-bottom">
-    <a class="navbar-brand" href="home.html">Earworm</a>
-    <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+    <a class="navbar-brand" href="home">Earworm</a>
+    <a class="nav-link" href="leaderboard">Leaderboard</a>
+    <a class="nav-link" href="quiz">quiz</a>
+    <a class="nav-link" href="pitch">pitch</a>
     <!--Additional elements will be added here as time goes on-->
   </nav>
 </div>
@@ -43,11 +45,11 @@
       </thead>
       <tbody>
       <!-- Loop through the leaderboard data and generate table rows dynamically -->
-      <repeat group="{{ @leaderboardData }}" value="{{ @entry }}">
+      <repeat group="{{ @players }}" value="{{ @player }}">
         <tr>
-          <td class="text-center">{{ @entry.name }}</td>
-          <td class="text-start">{{ @entry.score }}</td>
-          <td class="text-start">{{ @entry.date }}</td>
+          <td class="text-center">{{ @player.name }}</td>
+          <td class="text-start">{{ @player.score }}</td>
+          <td class="text-start">{{ @player.date }}</td>
         </tr>
       </repeat>
       </tbody>

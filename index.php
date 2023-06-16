@@ -17,9 +17,11 @@ $homeController = new HomeController();
 
 // Define the routes using the controller methods
 $f3->route('GET /', [$homeController, 'home']);
+$f3->route('GET /home', [$homeController, 'home']);
 $f3->route('GET /leaderboard', [$homeController, 'leaderboard']);
 $f3->route('GET /quiz', [$homeController, 'quiz']);
 $f3->route('GET /pitch', [$homeController, 'pitch']);
+$f3->route('GET /comment', [$homeController, 'comment']);
 
 //Run fat free
 $f3->run();

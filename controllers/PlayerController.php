@@ -1,4 +1,7 @@
 <?php
+require_once '../model/player.php';
+require_once 'validation.php';
+
 class PlayerController
 {
 private $player;
@@ -24,14 +27,20 @@ $view = new Template();
 echo $view->render('views/player_details.html', ['player' => $player]);
 }
 
-public function addPlayer($name, $age, $instrument)
-{
-$data = [
-'name' => $name,
-'age' => $age,
-'instrument' => $instrument
-];
-$this->database->insertData('player', $data);
-//$f3->reroute('/players'); // Redirect to the appropriate page after adding the player
-}
+    public function addPlayer($name, $age, $instrument)
+    {
+        // Perform server-side validation
+        $errors = Validation::validatePlayerData($name, $age, $instrument);
+
+        if (!empty($errors)) {
+            // Handle validation errors (e.g., display error messages to the user)
+            // ...
+            return;
+        }
+
+        // Continue with adding the player
+        $this->player->addPlayer($name, $age, $instrument);
+        // Redirect to the appropriate page after adding the player
+        // ...
+    }
 }

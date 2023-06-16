@@ -1,62 +1,73 @@
-// Quiz logic using Tone.js for audio playback
+const pitchButton = document.getElementById("pitch-button");
+const repeatButton = document.getElementById("repeat-button");
+const answerButtons = document.querySelectorAll(".answer-button");
+const scoreTracker = document.getElementById("score-tracker");
+const submitButton = document.getElementById("submit-button");
 
-// Create a new synth with a piano sound
-const synth = new Tone.Synth().toDestination();
+let randomPitch = getRandomPitch();
+let userAnswer = "";
+let score = 0;
 
-// Array of available notes
-const notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+updatePitchButtonLabel();
+resetScoreTracker();
 
-// Function to play a random note
-function playRandomNote() {
-    // Get a random note from the array
-    const randomNote = notes[Math.floor(Math.random() * notes.length)];
-
-    // Trigger the synth to play the note
-    synth.triggerAttackRelease(randomNote + '4', '4n');
-
-    // Return the played note
-    return randomNote;
-}
-
-// Function to check the user's guess
-function checkGuess(note, guess) {
-    // Convert the guess to uppercase for comparison
-    guess = guess.toUpperCase();
-
-    // Compare the guess with the actual note
-    return guess === note;
-}
-
-// Play button event listener
-document.getElementById('playBtn').addEventListener('click', function() {
-    // Play a random note and store the played note
-    const playedNote = playRandomNote();
-
-    // Store the played note in a hidden input field
-    document.getElementById('playedNote').value = playedNote;
+pitchButton.addEventListener("click", handlePitchButtonClick);
+repeatButton.addEventListener("click", handleRepeatButtonClick);
+answerButtons.forEach((button) => {
+    button.addEventListener("click", handleAnswerButtonClick);
 });
+submitButton.addEventListener("click", handleSubmitButtonClick);
 
-// Submit button event listener
-document.getElementById('submitBtn').addEventListener('click', function() {
-    // Get the played note from the hidden input field
-    const playedNote = document.getElementById('playedNote').value;
+function handlePitchButtonClick() {
+    playTune(randomPitch);
+}
 
-    // Get the user's guess from the input field
-    const userGuess = document.getElementById('noteInput').value;
+function handleRepeatButtonClick() {
+    playTune(randomPitch);
+}
 
-    // Check the user's guess
-    const isCorrect = checkGuess(playedNote, userGuess);
+function handleAnswerButtonClick() {
+    userAnswer = this.dataset.pitch;
+    checkAnswer();
+}
 
-    // Update the score based on the correctness of the guess
-    const scoreElement = document.getElementById('score');
-    const currentScore = parseInt(scoreElement.textContent);
+function handleSubmitButtonClick() {
+    submitScore();
+}
 
-    if (isCorrect) {
-        scoreElement.textContent = currentScore + 1;
-    } else {
-        scoreElement.textContent = currentScore - 1;
+function getRandomPitch() {
+    const pitches = ["a", "d", "e", "f", "g", "h", "j", "k", "l", "o", "p", "s", "t", "u", "w", "y"];
+    const randomIndex = Math.floor(Math.random() * pitches.length);
+    return pitches[randomIndex];
+}
+
+function playTune(pitch) {
+    const audio = new Audio(`tunes/${pitch}.wav`);
+    audio.play();
+}
+
+function updatePitchButtonLabel() {
+    pitchButton.textContent = `Play ${randomPitch.toUpperCase()}`;
+}
+
+function checkAnswer() {
+    if (userAnswer === randomPitch) {
+        score++;
+        updateScoreTracker();
+        randomPitch = getRandomPitch();
+        updatePitchButtonLabel();
     }
+}
 
-    // Clear the user's input
-    document.getElementById('noteInput').value = '';
-});
+function updateScoreTracker() {
+    scoreTracker.textContent = `Score: ${score}`;
+}
+
+function resetScoreTracker() {
+    score = 0;
+    updateScoreTracker();
+}
+
+function submitScore() {
+    // Implement your code for submitting the score here
+}
