@@ -1,12 +1,13 @@
 # Earworm
 
 Earworm is an ear-training webapp designed to hand control over to the user. The user can practice virtual piano and 
-train for pitch correction. Users and also leave feedback about the webapp on comment page.
+train for pitch correction. Users can also leave feedback about the webapp on comment page.
 
 ## Authors
 
-- Ethan
+
 - Sajal Khadgi
+- Ethan
 
 
 Quiz and Leaderboard are extra features and will be added soon. Maybe during the summer...
@@ -63,7 +64,8 @@ I tried my best to complete the task as much as I could, even though I had to li
 I wasn't able to figure out few things. I initially planed to have a log in page but I wasn't able to 
 get it. 
 
-
+Note: leaderboard and quiz webpage are extra attempt to try new things.
+It's for practicing things I learned this quarter, in order to become better at them.
 ## Admin Login(this is for database)
 
 Username: sajalgre_sajal
