@@ -8,6 +8,15 @@
  */
 class Controller
 {
+    private $_f3;
+    private $_dbPlayer;
+
+    function __construct($f3)
+    {
+        $this->_f3 = $f3;
+        $this->_dbPlayer = getDBPlayer();
+    }
+
     /**
      * Displays the home page.
      */
@@ -22,7 +31,7 @@ class Controller
      */
     public function leaderboard()
     {
-
+        $this->_f3->set('players', $this->_dbPlayer->getAllPlayers());
         $view = new Template();
         echo $view->render('views/leaderboard.html');
     }
@@ -32,6 +41,25 @@ class Controller
      */
     public function quiz()
     {
+        //If the user just completed a quiz...
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+            //And the appropriate data is set...
+            if(!empty($_POST['name']) && !empty($_POST['score'])){
+                //TODO: Populate with current date
+                //Get the current date
+                $date = '';
+                //Create object of appropriate class depending on whether they are an instrumentalist or not
+                if(!empty($_POST['instrument'])) {
+                    $user = new Instrumentalist($_POST['name'], $_POST['score'], $date, $_POST['instrument']);
+                } else {
+                    $user = new Player($_POST['name'], $_POST['score'], $date);
+                }
+                //Add player to the database then reroute to leaderboard
+                $this->_dbPlayer->addPlayer($user);
+                $this->_f3->reroute('leaderboard');
+            }
+        }
+        //Render the page
         $view = new Template();
         echo $view->render('views/quiz.html');
     }

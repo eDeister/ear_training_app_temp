@@ -13,10 +13,11 @@ error_reporting(E_ALL);
 
 //Require autoload and datalayer
 require_once('vendor/autoload.php');
+require_once('model/data-layer.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
-$con = new Controller();
+$con = new Controller($f3);
 
 
 // Define all routes using the controller methods
@@ -29,7 +30,7 @@ $f3->route('GET /home', function() {
 $f3->route('GET /leaderboard', function() {
     $GLOBALS['con']->leaderboard();
 });
-$f3->route('GET /quiz', function() {
+$f3->route('GET|POST /quiz', function() {
     $GLOBALS['con']->quiz();
 });
 $f3->route('GET /pitch', function() {

@@ -37,17 +37,25 @@ class DBPlayer
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function addPlayer($name, $age, $instrument)
+    public function addPlayer($player)
     {
         //Define
-        $sql = "INSERT INTO Player (name, age, instrument) 
-                VALUES (:name, :age, :instrument)";
+        if(get_class($player) == "Instrumentalist") {
+            $sql = "INSERT INTO Player (name, score, date, instrument) 
+                    VALUES (:name, :score, :date, :instrument)";
+        } else {
+            $sql = "INSERT INTO Player (name, score, date)
+                    VALUES (:name, :score, :date)";
+        }
         //Prepare
         $statement = $this->_dbh->prepare($sql);
         //Bind
-        $statement->bindParams(':name',$name,PDO::PARAM_STR);
-        $statement->bindParams(':age',$age,PDO::PARAM_INT);
-        $statement->bindParams(':instrument',$instrument,PDO::PARAM_STR);
+        $statement->bindParams(':name', $player->getName(), PDO::PARAM_STR);
+        $statement->bindParams(':score', $player->getScore(), PDO::PARAM_INT);
+        $statement->bindParams(':date', $player->getDate(), PDO::PARAM_STR);
+        if(get_class($player) == "Instrumentalist") {
+            $statement->bindParams(':instrument', $player->getInstrument(), PDO::PARAM_STR);
+        }
         //Execute
         $statement->execute();
     }
