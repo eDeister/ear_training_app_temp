@@ -3,35 +3,50 @@
 Description: For learboard database and quiz*/
 class Melody
 {
-    private $db;
+    private $_db;
 
     public function __construct()
     {
-        $this->db = new Database();
+        $this->_db = new Database();
     }
 
     public function getAllMelodies()
     {
-        $query = "SELECT * FROM Melody";
-        $result = $this->db->executeQuery($query);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
+        //Define
+        $sql = "SELECT * FROM Melody";
+        //Prepare
+        $statement = $this->_db->prepare($sql);
+        //Execute
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getMelodyById($melodyId)
     {
-        $query = "SELECT * FROM Melody WHERE melody_id = :melodyId";
-        $params = [':melodyId' => $melodyId];
-        $result = $this->db->executeQuery($query, $params);
-        return $result->fetch(PDO::FETCH_ASSOC);
+        //Define
+        $sql = "SELECT * FROM Melody 
+                WHERE melody_id = :melodyId";
+        //Prepare
+        $statement = $this->_db->prepare($sql);
+        //Bind
+        $statement->bindParams(':melodyId', $melodyId, PDO::PARAM_INT);
+        //Execute
+        $statement->execute();
+        //Process
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     public function addMelody($playerId, $scoreId)
     {
-        $query = "INSERT INTO Melody (player_id, score_id) VALUES (:playerId, :scoreId)";
-        $params = [
-            ':playerId' => $playerId,
-            ':scoreId' => $scoreId
-        ];
-        $this->db->executeQuery($query, $params);
+        //Define
+        $sql = "INSERT INTO Melody (player_id, score_id) 
+                VALUES (:playerId, :scoreId)";
+        //Prepare
+        $statement = $this->_db->prepare($sql);
+        //Bind
+        $statement->bindParam(':playerId', $playerId, PDO::PARAM_INT);
+        $statement->bindParam(':scoreId', $scoreId, PDO::PARAM_INT);
+        //Execute
+        $statement->execute();
     }
 }

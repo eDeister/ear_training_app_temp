@@ -1,5 +1,4 @@
-/*
-Player table
+
 CREATE TABLE Player (
     player_id INT PRIMARY KEY,
     name VARCHAR(50),
@@ -7,14 +6,12 @@ CREATE TABLE Player (
     instrument VARCHAR(50)
 );
 
-score table
 CREATE TABLE Score (
     score_id INT PRIMARY KEY,
     score_value INT,
     category VARCHAR(50)
 );
 
-Melody table
 CREATE TABLE Melody (
     melody_id INT PRIMARY KEY,
     player_id INT,
@@ -22,5 +19,3 @@ CREATE TABLE Melody (
     FOREIGN KEY (player_id) REFERENCES Player(player_id),
     FOREIGN KEY (score_id) REFERENCES Score(score_id)
 );
-
- */
