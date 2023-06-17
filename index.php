@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Sajal Khadgi, Ethan
+ * Sajal Khadgi, Ethan Deister
  * 5/13/2023
  * 328/ear_training_app/index.php
  * Final Project
@@ -11,25 +11,33 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//Require autoload
+//Require autoload and datalayer
 require_once('vendor/autoload.php');
-
-// Include the HomeController
-require_once('controllers/HomeController.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
+$con = new Controller();
 
-// Create an instance of the HomeController
-$homeController = new HomeController();
 
-// Define the routes using the controller methods
-$f3->route('GET /', [$homeController, 'home']);
-$f3->route('GET /home', [$homeController, 'home']);
-$f3->route('GET /leaderboard', [$homeController, 'leaderboard']);
-$f3->route('GET /quiz', [$homeController, 'quiz']);
-$f3->route('GET /pitch', [$homeController, 'pitch']);
-$f3->route('GET /comment', [$homeController, 'comment']);
+// Define all routes using the controller methods
+$f3->route('GET /', function() {
+    $GLOBALS['con']->home();
+});
+$f3->route('GET /home', function() {
+    $GLOBALS['con']->home();
+});
+$f3->route('GET /leaderboard', function() {
+    $GLOBALS['con']->leaderboard();
+});
+$f3->route('GET /quiz', function() {
+    $GLOBALS['con']->quiz();
+});
+$f3->route('GET /pitch', function() {
+    $GLOBALS['con']->pitch();
+});
+$f3->route('GET /comment', function() {
+    $GLOBALS['con']->comment();
+});
 
 //Run fat free
 $f3->run();

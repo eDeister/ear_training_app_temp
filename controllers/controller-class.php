@@ -1,13 +1,12 @@
 <?php
-// controllers/HomeController.php
-/*@author Sajal Khadgi
-Description: For learboard database and quiz*/
 /**
- * Class HomeController
- * Responsible for handling actions related to the home, leaderboard, quiz, comment, and pitch pages.
- * @author : Sajal Khadgi
+ *
+ * Controller Class
+ *
+ * Responsible for routing and logic for the home, leaderboard, quiz, comment, and pitch pages.
+ * @author : Sajal Khadgi, Ethan Deister
  */
-class HomeController
+class Controller
 {
     /**
      * Displays the home page.
@@ -54,4 +53,4 @@ class HomeController
         echo $view->render('views/piano.html');
     }
 }
-?>
+

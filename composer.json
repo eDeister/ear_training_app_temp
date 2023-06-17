@@ -10,9 +10,7 @@
     "bcosca/fatfree-core": "dev-master"
   },
   "autoload": {
-    "classmap": [
-      "model/Player.php"
-    ]
+    "classmap": ["model/", "controllers/"]
   }
 
 }
