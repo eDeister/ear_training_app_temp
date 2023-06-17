@@ -1,5 +1,5 @@
 <?php
-//for Melody saving process
+//for DBMelody saving process
 /*@author Sajal Khadgi
 Description: For learboard database and quiz*/
 class MelodyController extends BaseController
@@ -8,7 +8,7 @@ class MelodyController extends BaseController
 
     public function __construct()
     {
-        $this->melody = new Melody();
+        $this->melody = new DBMelody();
     }
 
     public function getAllMelodies()

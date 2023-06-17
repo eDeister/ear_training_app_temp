@@ -22,6 +22,7 @@ class Controller
      */
     public function leaderboard()
     {
+
         $view = new Template();
         echo $view->render('views/leaderboard.html');
     }

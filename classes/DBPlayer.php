@@ -1,18 +1,13 @@
 <?php
 /*@author Sajal Khadgi
 Description: For learboard database and quiz*/
-class Player
+class DBPlayer
 {
     private $_dbh;
 
-    public function __construct()
+    public function __construct($dbh)
     {
-        try {
-            $this->_dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-            $this->_dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            echo $e->getMessage();
-        }
+        $this->_dbh = $dbh;
     }
 
     public function getAllPlayers()

@@ -18,15 +18,20 @@
         <th class="text-center">Name</th>
         <th class="text-start">Score</th>
         <th class="text-start">Date Achieved</th>
+        <th class="text-start">Instrument</th>
       </tr>
       </thead>
       <tbody>
       <!-- Loop through the leaderboard data and generate table rows dynamically -->
-      <repeat group="{{ @players }}" value="{{ @player }}">
+      <repeat group="{{ @players }}" key="{{ @player }}">
         <tr>
           <td class="text-center">{{ @player.name }}</td>
           <td class="text-start">{{ @player.score }}</td>
           <td class="text-start">{{ @player.date }}</td>
+          <check if="{{ @player.instrument }}">
+            <true><td class="text-start">{{ @player.instrument}}</td></true>
+            <false><td></td></false>
+          </check>
         </tr>
       </repeat>
       </tbody>

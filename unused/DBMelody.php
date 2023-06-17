@@ -1,13 +1,13 @@
 <?php
 /*@author Sajal Khadgi
 Description: For learboard database and quiz*/
-class Melody
+class DBMelody
 {
-    private $_db;
+    private $_dbh;
 
-    public function __construct()
+    public function __construct($dbh)
     {
-        $this->_db = new Database();
+        $this->_dbh = $dbh;
     }
 
     public function getAllMelodies()
@@ -15,7 +15,7 @@ class Melody
         //Define
         $sql = "SELECT * FROM Melody";
         //Prepare
-        $statement = $this->_db->prepare($sql);
+        $statement = $this->_dbh->prepare($sql);
         //Execute
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -27,7 +27,7 @@ class Melody
         $sql = "SELECT * FROM Melody 
                 WHERE melody_id = :melodyId";
         //Prepare
-        $statement = $this->_db->prepare($sql);
+        $statement = $this->_dbh->prepare($sql);
         //Bind
         $statement->bindParams(':melodyId', $melodyId, PDO::PARAM_INT);
         //Execute
@@ -42,7 +42,7 @@ class Melody
         $sql = "INSERT INTO Melody (player_id, score_id) 
                 VALUES (:playerId, :scoreId)";
         //Prepare
-        $statement = $this->_db->prepare($sql);
+        $statement = $this->_dbh->prepare($sql);
         //Bind
         $statement->bindParam(':playerId', $playerId, PDO::PARAM_INT);
         $statement->bindParam(':scoreId', $scoreId, PDO::PARAM_INT);

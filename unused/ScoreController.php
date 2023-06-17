@@ -7,7 +7,7 @@ class ScoreController
 
     public function __construct()
     {
-        $this->score = new Score();
+        $this->score = new DBScore();
     }
 
     public function getAllScores()

@@ -1,9 +1,11 @@
 
 CREATE TABLE Player (
     player_id INT PRIMARY KEY,
+    score_id INT,
     name VARCHAR(50),
     age INT,
-    instrument VARCHAR(50)
+    instrument VARCHAR(50),
+    FOREIGN KEY (score_id) REFERENCES Score(score_id)
 );
 
 CREATE TABLE Score (

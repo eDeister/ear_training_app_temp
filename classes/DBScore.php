@@ -1,19 +1,19 @@
 <?php
 /*@author Sajal Khadgi
 Description: For learboard database and quiz*/
-class Score
+class DBScore
 {
-    private $db;
+    private $_dbh;
 
-    public function __construct()
+    public function __construct($dbh)
     {
-        $this->db = new Database();
+        $this->_dbh = $dbh;
     }
 
     public function getAllScores()
     {
         $query = "SELECT * FROM Score";
-        $result = $this->db->executeQuery($query);
+        $result = $this->_dbh->executeQuery($query);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -21,7 +21,7 @@ class Score
     {
         $query = "SELECT * FROM Score WHERE score_id = :scoreId";
         $params = [':scoreId' => $scoreId];
-        $result = $this->db->executeQuery($query, $params);
+        $result = $this->_dbh->executeQuery($query, $params);
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -32,6 +32,6 @@ class Score
             ':scoreValue' => $scoreValue,
             ':category' => $category
         ];
-        $this->db->executeQuery($query, $params);
+        $this->_dbh->executeQuery($query, $params);
     }
 }
