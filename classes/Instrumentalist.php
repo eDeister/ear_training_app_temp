@@ -1,5 +1,15 @@
 <?php
 
+/**
+ *
+ * A player (user) who also plays an instrument
+ *
+ * Extends the player class, stores extra info about the user through a private member (instrument)
+ * and has all the appropriate constructors/getters/setters. PHPDocs have been omitted for inner methods
+ * given their self-explanatory nature.
+ *
+ * @author Ethan Deister
+ */
 class Instrumentalist extends Player
 {
     private $_instrument;

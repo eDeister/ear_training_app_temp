@@ -1,6 +1,14 @@
 <?php
-/*@author Sajal Khadgi
-Description: For learboard database and quiz*/
+
+/**
+ *
+ * A data object used to add and retrieve data about players.
+ *
+ * Accepts PDO from a DataLayer object, uses the PDO to execute prepared statements which can
+ * insert or select data about Player objects.
+ *
+ * @author Ethan Deister
+ */
 class DBPlayer
 {
     private $_dbh;
@@ -10,6 +18,12 @@ class DBPlayer
         $this->_dbh = $dbh;
     }
 
+    /**
+     *
+     * Access all player records from database with SQL and PDO
+     *
+     * @return mixed An associative array containing all rows from the Player table
+     */
     public function getAllPlayers()
     {
         //Define
@@ -22,6 +36,13 @@ class DBPlayer
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     *
+     * Get a specific player
+     *
+     * @param $playerId int The id of the player in question
+     * @return mixed An associative array of the attributes of the player
+     */
     public function getPlayerById($playerId)
     {
         //Define
@@ -37,6 +58,13 @@ class DBPlayer
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     *
+     * Add one player record to the database
+     *
+     * @param $player Player A player object (constructed in the controller)
+     * @return void
+     */
     public function addPlayer($player)
     {
         //Define
@@ -50,11 +78,11 @@ class DBPlayer
         //Prepare
         $statement = $this->_dbh->prepare($sql);
         //Bind
-        $statement->bindParams(':name', $player->getName(), PDO::PARAM_STR);
-        $statement->bindParams(':score', $player->getScore(), PDO::PARAM_INT);
-        $statement->bindParams(':date', $player->getDate(), PDO::PARAM_STR);
+        $statement->bindParam(':name', $player->getName(), PDO::PARAM_STR);
+        $statement->bindParam(':score', $player->getScore(), PDO::PARAM_INT);
+        $statement->bindParam(':date', $player->getDate(), PDO::PARAM_STR);
         if(get_class($player) == "Instrumentalist") {
-            $statement->bindParams(':instrument', $player->getInstrument(), PDO::PARAM_STR);
+            $statement->bindParam(':instrument', $player->getInstrument(), PDO::PARAM_STR);
         }
         //Execute
         $statement->execute();

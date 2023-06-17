@@ -1,5 +1,14 @@
 <?php
 
+/**
+ *
+ * A player (user) on the website
+ *
+ * Holds user data (name, highscore, and date achieved) with appropriate constructors, getters,
+ * and setters. Omits PHPDocs for inner methods due to their self-explanatory nature.
+ *
+ * @author Ethan Deister
+ */
 class Player
 {
     private $_name, $_score, $_date;

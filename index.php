@@ -13,7 +13,6 @@ error_reporting(E_ALL);
 
 //Require autoload and datalayer
 require_once('vendor/autoload.php');
-require_once('model/data-layer.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -27,7 +26,7 @@ $f3->route('GET /', function() {
 $f3->route('GET /home', function() {
     $GLOBALS['con']->home();
 });
-$f3->route('GET /leaderboard', function() {
+$f3->route('GET|POST /leaderboard', function() {
     $GLOBALS['con']->leaderboard();
 });
 $f3->route('GET|POST /quiz', function() {
